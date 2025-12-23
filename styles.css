@@ -1,0 +1,114 @@
+:root {
+  --console-color: #14fdce;
+  --console-bg: #031e11;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: black;
+  color: var(--console-color);
+  font-family: 'VT323', monospace;
+  overflow: hidden;
+}
+
+/* GAME */
+#game {
+  position: fixed;
+  inset: 0;
+  background: var(--console-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* QUESTION */
+#question {
+  font-size: 3.2rem;
+  font-weight: 900;
+  max-width: 80%;
+  margin-bottom: 3rem;
+  text-shadow:
+    0 0 5px var(--console-color),
+    0 0 20px rgba(20,253,206,0.4);
+}
+
+/* TYPEWRITER CURSOR */
+.typewriter {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid var(--console-color);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* OPTIONS */
+#options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 60%;
+  max-width: 700px;
+}
+
+.option {
+  border: 3px solid var(--console-color);
+  padding: 2rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.option:hover {
+  background: var(--console-color);
+  color: var(--console-bg);
+  box-shadow: 0 0 25px var(--console-color);
+}
+
+/* CRT EFFECTS */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0) 0px,
+    rgba(0,0,0,0.2) 2px,
+    rgba(0,0,0,0.4) 4px
+  );
+  pointer-events: none;
+}
+
+.glow {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(20,253,206,0.15), transparent 70%);
+  pointer-events: none;
+}
+
+/* DEATH SCREEN */
+#death {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: none;
+  z-index: 5;
+}
+
+.eye {
+  position: absolute;
+  inset: 0;
+  animation: closeEye 1.5s forwards;
+}
+
+@keyframes closeEye {
+  0% { clip-path: inset(0 0 0 0); }
+  100% { clip-path: inset(50% 0 50% 0); }
+}
